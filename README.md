@@ -1,77 +1,80 @@
 🌄 Landscape Image Colorization using PyTorch
 This project uses a Convolutional Neural Network (CNN) to automatically colorize grayscale landscape images. It is built using PyTorch and processes paired datasets of grayscale and color images to learn how to recreate color from black-and-white photos.
 
-📁 Dataset Structure
-Make sure your dataset is structured like this:
-
-css
-Copy
-Edit
-landscape Images/
-├── color/  → RGB colored images
-└── gray/   → Grayscale images (same filenames as in color/)
- Requirements
-Install these Python packages:
-
+🚀 Setup Instructions
+1. Clone the Repository
 bash
 Copy
 Edit
-pip install torch torchvision matplotlib pillow tqdm
-If you're using Google Colab, mount your Google Drive and unzip the dataset:
+git clone https://github.com/yourusername/image-colorization.git
+cd image-colorization
 
+3. Mount Google Drive in Colab (if using Colab)
 python
 Copy
 Edit
 from google.colab import drive
 drive.mount('/content/gdrive')
+
+5. Extract the Dataset
+bash
+Copy
+Edit
 !unzip "/content/gdrive/MyDrive/archive (3).zip" -d "/content/"
-🧠 Model Description
-The model is a basic CNN that takes 1-channel grayscale images as input and tries to generate 3-channel RGB color images. It is trained using pairs of grayscale and corresponding color images.
 
-Optimizer: SGD
+7. Dataset Structure
+Make sure your dataset is structured like this:
 
-Loss Function: MSELoss
+nginx
+Copy
+Edit
+landscape Images/
+├── color/  # colored images
+└── gray/   # grayscale images (same filenames as in color/)
 
-Epochs: 3
-
-Batch Size: 32
-
-Device: GPU/CPU (auto-detect)
-
-🚀 How to Run
-Load and prepare the dataset using the custom LandscapeDataset class.
-
-Split the dataset into training and testing sets.
-
-Train the CNN model using DataLoader.
-
-Visualize grayscale vs color output using show_images() function.
-
-💻 Optional: Deploy with Gradio
-You can build a web app using Gradio to upload grayscale images and view the colorized result.
+⚙️ Dependencies
+Install these required libraries:
 
 bash
 Copy
 Edit
-pip install gradio
-Then use a script like this:
+pip install torch torchvision matplotlib tqdm pillow gradio
+
+🧠 Project Workflow
+Custom Dataset Loader using PyTorch
+
+Preprocessing & Normalization
+
+CNN Model to map grayscale → color
+
+Training & Evaluation on custom images
+
+Visualization of results (grayscale vs. predicted color)
+
+Gradio Interface (optional) for web-based testing
+
+🌐 Web Demo (Optional)
+To run a browser-based demo using Gradio:
 
 python
 Copy
 Edit
 import gradio as gr
 
-def predict(img):
-    # Preprocess and run model prediction
-    return colorized_img
+def predict(image):
+    # Your model inference code here
+    return colorized_image
 
 gr.Interface(fn=predict, inputs="image", outputs="image").launch()
-📷 Output Sample
-Use the visualization function to compare grayscale input and model-predicted color output side-by-side.
+📸 Example Output
 
+Grayscale Input	Colorized Output
 📬 Contact
 Created by Megha Solanki
-For questions or collaboration, connect via GitHub Issues
+For questions, open an issue on GitHub.
+
+
+ 
 
 
 
