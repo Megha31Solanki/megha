@@ -1,13 +1,26 @@
 🌄 Landscape Image Colorization using PyTorch
 This project uses a Convolutional Neural Network (CNN) to automatically colorize grayscale landscape images. It is built using PyTorch and processes paired datasets of grayscale and color images to learn how to recreate color from black-and-white photos.
-
-🚀 Setup Instructions
-1. Clone the Repository
-bash
+📁 Dataset Structure
+css
 Copy
 Edit
-git clone https://github.com/yourusername/image-colorization.git
-cd image-colorization
+landscape Images/
+├── color/
+│   ├── image1.jpg
+│   └── ...
+└── gray/
+    ├── image1.jpg
+    └── ...
+📦 Features
+Custom PyTorch Dataset (LandscapeDataset)
+
+Grayscale and color image pairs
+
+Preprocessing using torchvision.transforms
+
+DataLoader for training and testing
+
+Visualization function to compare gray vs. color
 
 3. Mount Google Drive in Colab (if using Colab)
 python
@@ -22,15 +35,7 @@ Copy
 Edit
 !unzip "/content/gdrive/MyDrive/archive (3).zip" -d "/content/"
 
-7. Dataset Structure
-Make sure your dataset is structured like this:
 
-nginx
-Copy
-Edit
-landscape Images/
-├── color/  # colored images
-└── gray/   # grayscale images (same filenames as in color/)
 
 ⚙️ Dependencies
 Install these required libraries:
@@ -52,6 +57,32 @@ Training & Evaluation on custom images
 Visualization of results (grayscale vs. predicted color)
 
 Gradio Interface (optional) for web-based testing
+🧠 Model Architecture
+The model is a Convolutional Neural Network (CNN) designed to learn the mapping from grayscale images to their colored counterparts. It consists of several convolutional layers followed by activation functions and upsampling layers to reconstruct the color image.​
+
+🏋️ Training
+To train the model, run the training script:​
+
+
+python train.py
+The training parameters are set as follows:​
+
+Epochs: 3
+
+Learning Rate: 0.001
+
+Batch Size: 32
+
+Device: CUDA if available, else CPU​
+
+📊 Visualization
+After training, you can visualize the results using the provided visualization script:​
+
+
+python visualize.py
+This will display a set of grayscale images alongside their colorized versions.
+
+
 
 🌐 Web Demo (Optional)
 To run a browser-based demo using Gradio:
